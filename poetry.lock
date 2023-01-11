@@ -48,6 +48,14 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "colorama"
+version = "0.4.6"
+description = "Cross-platform colored terminal text."
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
+
+[[package]]
 name = "cons"
 version = "0.4.5"
 description = "An implementation of Lisp/Scheme-like cons in Python."
@@ -139,6 +147,41 @@ unicode = ["unicodedata2 (>=14.0.0)"]
 woff = ["zopfli (>=0.1.4)", "brotlicffi (>=0.8.0)", "brotli (>=1.0.1)"]
 
 [[package]]
+name = "jax"
+version = "0.4.1"
+description = "Differentiate, compile, and transform Numpy code."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+numpy = ">=1.20"
+opt_einsum = "*"
+scipy = ">=1.5"
+
+[package.extras]
+australis = ["protobuf (>=3.13,<4)"]
+ci = ["jaxlib (==0.4.0)"]
+cpu = ["jaxlib (==0.4.1)"]
+cuda = ["jaxlib (==0.4.1+cuda11.cudnn86)"]
+cuda11_cudnn82 = ["jaxlib (==0.4.1+cuda11.cudnn82)"]
+cuda11_cudnn86 = ["jaxlib (==0.4.1+cuda11.cudnn86)"]
+minimum-jaxlib = ["jaxlib (==0.3.22)"]
+tpu = ["jaxlib (==0.4.1)", "libtpu-nightly (==0.1.dev20221212)", "requests"]
+
+[[package]]
+name = "jaxlib"
+version = "0.4.1"
+description = "XLA library for JAX"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+numpy = ">=1.20"
+scipy = ">=1.5"
+
+[[package]]
 name = "kiwisolver"
 version = "1.4.4"
 description = "A fast implementation of the Cassowary constraint solver"
@@ -223,6 +266,45 @@ description = "Fundamental package for array computing in Python"
 category = "main"
 optional = false
 python-versions = ">=3.8"
+
+[[package]]
+name = "numpyro"
+version = "0.10.1"
+description = "Pyro PPL on NumPy"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+jax = ">=0.2.13"
+jaxlib = ">=0.1.65"
+multipledispatch = "*"
+numpy = "*"
+tqdm = "*"
+
+[package.extras]
+cpu = ["jax[cpu] (>=0.2.13)"]
+cuda = ["jax[cuda] (>=0.2.13)"]
+dev = ["dm-haiku", "flax", "funsor (>=0.4.1)", "graphviz", "jaxns (==1.0.0)", "optax (>=0.0.6)", "pyyaml", "tensorflow-probability (>=0.15.0)"]
+doc = ["ipython", "nbsphinx (>=0.8.5)", "readthedocs-sphinx-search (==0.1.0)", "sphinx", "sphinx-rtd-theme", "sphinx-gallery"]
+examples = ["arviz", "jupyter", "matplotlib", "pandas", "seaborn", "scikit-learn", "wordcloud"]
+test = ["black[jupyter] (>=21.8b0)", "flake8", "isort (>=5.0)", "pytest (>=4.1)", "pyro-api (>=0.1.1)", "scipy (>=1.6,<1.7)"]
+tpu = ["jax[tpu] (>=0.2.13)"]
+
+[[package]]
+name = "opt-einsum"
+version = "3.3.0"
+description = "Optimizing numpys einsum function"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+numpy = ">=1.7"
+
+[package.extras]
+tests = ["pytest-pep8", "pytest-cov", "pytest"]
+docs = ["numpydoc", "sphinx-rtd-theme", "sphinxcontrib-napoleon", "sphinx (==1.2.3)"]
 
 [[package]]
 name = "packaging"
@@ -407,6 +489,23 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "tqdm"
+version = "4.64.1"
+description = "Fast, Extensible Progress Meter"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[package.extras]
+dev = ["py-make (>=0.1.0)", "twine", "wheel"]
+notebook = ["ipywidgets (>=6)"]
+slack = ["slack-sdk"]
+telegram = ["requests"]
+
+[[package]]
 name = "typing-extensions"
 version = "4.4.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -457,7 +556,7 @@ test = ["hypothesis", "pytest", "pytest-cov", "packaging"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "fe76031f6f8b983a1c4e098e6676cab8c7111907d8b9cbb238b4056634815a01"
+content-hash = "c2c5edd1fabb7393a232d72b57f30b73e24e19cbe93e8d22337a2777d74d3c2f"
 
 [metadata.files]
 arviz = [
@@ -494,6 +593,10 @@ cftime = [
 cloudpickle = [
     {file = "cloudpickle-2.2.0-py3-none-any.whl", hash = "sha256:7428798d5926d8fcbfd092d18d01a2a03daf8237d8fcdc8095d256b8490796f0"},
     {file = "cloudpickle-2.2.0.tar.gz", hash = "sha256:3f4219469c55453cfe4737e564b67c2a149109dabf7f242478948b895f61106f"},
+]
+colorama = [
+    {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
+    {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
 ]
 cons = [
     {file = "cons-0.4.5.tar.gz", hash = "sha256:b46b48adb5a5af7f44375da346d926e55a325d4dc12b9add9f20280d3b3742cb"},
@@ -587,6 +690,23 @@ filelock = [
 fonttools = [
     {file = "fonttools-4.38.0-py3-none-any.whl", hash = "sha256:820466f43c8be8c3009aef8b87e785014133508f0de64ec469e4efb643ae54fb"},
     {file = "fonttools-4.38.0.zip", hash = "sha256:2bb244009f9bf3fa100fc3ead6aeb99febe5985fa20afbfbaa2f8946c2fbdaf1"},
+]
+jax = [
+    {file = "jax-0.4.1.tar.gz", hash = "sha256:b795a75ca2eabb5d20b83f1aa1e1038dafeca89ee74c9ac6e2b919215cadf427"},
+]
+jaxlib = [
+    {file = "jaxlib-0.4.1-cp310-cp310-macosx_10_14_x86_64.whl", hash = "sha256:8bc22e057010e8ae822f916d04bc94b1455ef3d950b1a41cf3f5ddaa84b610bc"},
+    {file = "jaxlib-0.4.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:89497eadbc7def7402a899fd521e3c045924c5ecb3a370b8d755d8f1d7fa2fa5"},
+    {file = "jaxlib-0.4.1-cp310-cp310-manylinux2014_x86_64.whl", hash = "sha256:9e91ba958cfae9ce61190c78a7beb09c3a1e03253b4b9a80c99d563ae8f4baeb"},
+    {file = "jaxlib-0.4.1-cp311-cp311-macosx_10_14_x86_64.whl", hash = "sha256:6a87ba1e0818e2d72c1ee9ba609d83dc214bbafbfadfc3fb3d73f64a299f3ec0"},
+    {file = "jaxlib-0.4.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:f7894a395612bf68598026b1f0809f8a3674f5d0f5e6b1b49d82f48b355ec184"},
+    {file = "jaxlib-0.4.1-cp311-cp311-manylinux2014_x86_64.whl", hash = "sha256:194952ffad1c35af95c1e4f513aa0f3a9c7768743e515ee68566c2949045381c"},
+    {file = "jaxlib-0.4.1-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:fa2264882959f24fe50dc62d95ac53a617b94e8c8bb160d5a739eac742e4117f"},
+    {file = "jaxlib-0.4.1-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:1437b4ea9f55e0bc8286911bf14382d72e923487fcad054a9685b2f443ff3027"},
+    {file = "jaxlib-0.4.1-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:d06e4bf7b65b54e40146a62bf8c8bdece604d6f0f6bbe1667158832f6ff6b046"},
+    {file = "jaxlib-0.4.1-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:5d53435b5655aae03d004e4e90b0f401488baf08836a23e4fabab07e642fc44b"},
+    {file = "jaxlib-0.4.1-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:7967ba5c005e1f3ae3c4ea54123ac78290fedd2f0809498eb8e9ef191e293094"},
+    {file = "jaxlib-0.4.1-cp39-cp39-manylinux2014_x86_64.whl", hash = "sha256:5f8988df1a44fcf25d225fb8abbbd3f0c495eaacfefab374ce20bd02948fddb0"},
 ]
 kiwisolver = [
     {file = "kiwisolver-1.4.4-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:2f5e60fabb7343a836360c4f0919b8cd0d6dbf08ad2ca6b9cf90bf0c76a3c4f6"},
@@ -771,6 +891,14 @@ numpy = [
     {file = "numpy-1.24.1-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:cfa1161c6ac8f92dea03d625c2d0c05e084668f4a06568b77a25a89111621566"},
     {file = "numpy-1.24.1.tar.gz", hash = "sha256:2386da9a471cc00a1f47845e27d916d5ec5346ae9696e01a8a34760858fe9dd2"},
 ]
+numpyro = [
+    {file = "numpyro-0.10.1-py3-none-any.whl", hash = "sha256:9833ee834c3bb1e57acd30dca6263aaf8926bf3b92f903e1a3276621fc3a184c"},
+    {file = "numpyro-0.10.1.tar.gz", hash = "sha256:dfa896f01c8df43ddd41663af2b3e2fc4aea73489e669474e83329b183b29150"},
+]
+opt-einsum = [
+    {file = "opt_einsum-3.3.0-py3-none-any.whl", hash = "sha256:2455e59e3947d3c275477df7f5205b30635e266fe6dc300e3d9f9646bfcea147"},
+    {file = "opt_einsum-3.3.0.tar.gz", hash = "sha256:59f6475f77bbc37dcf7cd748519c0ec60722e91e63ca114e68821c0c54a46549"},
+]
 packaging = [
     {file = "packaging-23.0-py3-none-any.whl", hash = "sha256:714ac14496c3e68c99c29b00845f7a2b85f3bb6f1078fd9f72fd20f0570002b2"},
     {file = "packaging-23.0.tar.gz", hash = "sha256:b6ad297f8907de0fa2fe1ccbd26fdaf387f5f47c7275fedf8cce89f99446cf97"},
@@ -938,6 +1066,10 @@ tomli = [
 toolz = [
     {file = "toolz-0.12.0-py3-none-any.whl", hash = "sha256:2059bd4148deb1884bb0eb770a3cde70e7f954cfbbdc2285f1f2de01fd21eb6f"},
     {file = "toolz-0.12.0.tar.gz", hash = "sha256:88c570861c440ee3f2f6037c4654613228ff40c93a6c25e0eba70d17282c6194"},
+]
+tqdm = [
+    {file = "tqdm-4.64.1-py2.py3-none-any.whl", hash = "sha256:6fee160d6ffcd1b1c68c65f14c829c22832bc401726335ce92c52d395944a6a1"},
+    {file = "tqdm-4.64.1.tar.gz", hash = "sha256:5f4f682a004951c1b450bc753c710e9280c5746ce6ffedee253ddbcbf54cf1e4"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.4.0-py3-none-any.whl", hash = "sha256:16fa4864408f655d35ec496218b85f79b3437c829e93320c7c9215ccfd92489e"},
